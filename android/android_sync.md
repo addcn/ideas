@@ -1,6 +1,12 @@
 android异步
 ==============
 
+- [android开发规范](https://github.com/addcn/ideas/blob/master/android/code_style.md)
+- [android异步](https://github.com/addcn/ideas/blob/master/android/android_sync.md)
+
+
+
+
 熟悉Windows编程的朋友知道Windows程序是消息驱动的，并且有全局的消息循环系统。Google参考了Windows的消息循环机制，也在Android系统中实现了消息循环机制。Android通过Looper、Handler来实现消息循环机制。Android的消息循环是针对线程的，每个线程都可以有自己的消息队列和消息循环。
 
 Android系统中的Looper负责管理线程的消息队列和消息循环。通过Looper.myLooper()得到当前线程的Looper对象，通过Looper.getMainLooper()得到当前进程的主线程的Looper对象。
