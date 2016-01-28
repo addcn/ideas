@@ -9,7 +9,7 @@
 
 对开发者更友好的android library仓库目前有`jcenter`和`Maven Central`，它们维护在完全不同的服务器上，由不同的人提供内容，两者之间毫无关系。
 
-除了两个标准的服务器之外，我们还可以把library放在自己的Maven仓库服务器，此时需要自己定义仓库的url，如Twitter的Fabric.io,
+除了两个标准的服务器之外，我们还可以把library放在自己的Maven仓库服务器，此时需要自己定义仓库的url，如Twitter的Fabric.io，定义仓库的url,
 
 ```java
 repositories {
@@ -25,7 +25,7 @@ dependencies {
 }
 ```
 
-Android Studio团队在最新版本的Android Studio把默认的仓库替换成jcenter，`jcenter()`自动被定义，而不是`mavenCentral()`。
+Android Studio团队在最新版本的Android Studio把默认的仓库替换成jcenter了，`jcenter()`自动被定义，而不是旧版本的`mavenCentral()`。
 
 ##发布环境
 
@@ -46,9 +46,8 @@ Android Studio团队在最新版本的Android Studio把默认的仓库替换成j
 
 - 配置Project（最外层）`local.properties`文件API key。
 
-    [Profile页面](https://bintray.com/profile/edit)复制API Key填写。
+    [Profile页面](https://bintray.com/profile/edit)复制API Key填写，完整内容如下：
 
-	完整内容如下：
 	
 	```java
 	sdk.dir=D\:\\android-studio\\sdk	
@@ -69,9 +68,6 @@ Android Studio团队在最新版本的Android Studio把默认的仓库替换成j
 	        classpath 'com.android.tools.build:gradle:1.5.0'
 	        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
 	        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-	
-	        // NOTE: Do not place your application dependencies here; they belong
-	        // in the individual module build.gradle files
 	    }
 	}
 	
@@ -195,14 +191,14 @@ Android Studio团队在最新版本的Android Studio把默认的仓库替换成j
 
 - 提交library文件到Bintray
 
-	切换到`Terminal`面板执行
+	切换到`Terminal`面板执行：
 
 	```java
 	gradlew install
 	gradlew bintrayUpload
 	```
 
-	如果没有错误，你会看到下面的提示：
+	如果没有错误，成功的话会有如下提示：
 
 	```java
 	SUCCESSFUL
@@ -213,6 +209,7 @@ Bintray网页上，版本区域会变化，进入Files选项卡，可以看见�
 
 
 到此，你的library在互联网上任何人都可以使用了！
+
 
 不过library只是在你自己的Maven仓库，而不是在jcenter上。如果有人想使用你的library，他必须定义仓库的url，如下：
 
@@ -262,4 +259,3 @@ dependencies {
 - [使用Gradle发布项目到JCenter仓库](http://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/)----主要参考之一，基本全部使用这文章的配置代码
 
 - [如何使用Android Studio把自己的Android library分享到jCenter和Maven Central](http://www.open-open.com/lib/view/open1435109824278.html)----主要参考之一，了解是怎么回事和流程，比前面参考的多了Sonatype帐号的看的有点乱（为Maven Central创建个Sonatype帐号。注：如果你不打算把library上传到Maven Central，可以跳过第二和第三部分。）
-
