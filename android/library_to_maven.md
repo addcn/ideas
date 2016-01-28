@@ -1,12 +1,15 @@
 发布library到Maven仓库
 ==================================================
 
-> 本文是将library发布到jcenter的一次记录。
+> 本文是将[PNEditText](https://github.com/addcn/PNEditText)(学习如何提交library到jcenter的虚拟项目)发布到jcenter的一次记录。
 
 
-对开发者更友好的android library仓库有`jcenter`和`Maven Central`，但是它们维护在完全不同的服务器上，由不同的人提供内容，两者之间毫无关系。在jcenter上有的可能Maven Central上没有，反之亦然。
 
-除了两个标准的服务器之外，我们还可以把该library放在自己的的Maven仓库服务器，此时需要自己如下定义仓库的url,
+##基本概念
+
+对开发者更友好的android library仓库目前有`jcenter`和`Maven Central`，它们维护在完全不同的服务器上，由不同的人提供内容，两者之间毫无关系。
+
+除了两个标准的服务器之外，我们还可以把library放在自己的Maven仓库服务器，此时需要自己定义仓库的url，如Twitter的Fabric.io,
 
 ```java
 repositories {
@@ -14,13 +17,15 @@ repositories {
 }
 ```
 
-然后在里面使用相同的方法获取一个library。
+然后获取一个library。
 
 ```java
 dependencies {
     compile 'com.crashlytics.sdk.android:crashlytics:2.2.4@aar'
 }
 ```
+
+Android Studio团队在最新版本的Android Studio把默认的仓库替换成jcenter，`jcenter()`自动被定义，而不是`mavenCentral()`。
 
 ##发布环境
 
@@ -30,7 +35,8 @@ dependencies {
 
 ##具体步骤
 
-- 注册[Bintray账号](https://bintray.com/)（我直接用google账号注册登入）。
+1. 注册[Bintray账号](https://bintray.com/)（我直接用google账号注册登入）。
+
 
 - 在bintray上创建package。
 
@@ -189,23 +195,26 @@ dependencies {
 
 - 提交library文件到Bintray
 
-	`Terminal`界面执行以下
+	切换到`Terminal`面板执行
+
 	```java
 	gradlew install
 	gradlew bintrayUpload
 	```
 
-	如果显示如下你就大喊一声eureka吧！
+	如果没有错误，你会看到下面的提示：
+
 	```java
 	SUCCESSFUL
 	```
 
 
+Bintray网页上，版本区域会变化，进入Files选项卡，可以看见上传的library文件。
 
-现在，Bintray网页上版本区域会变化，进入Files选项卡，可以看见我们上传的library文件。
 
+到此，你的library在互联网上任何人都可以使用了！
 
-你的library在互联网上任何人都可以使用了！不过library现在只是在你自己的Maven仓库，而不是在jcenter上。如果有人想使用你的library，他必须定义仓库的url，如下：
+不过library只是在你自己的Maven仓库，而不是在jcenter上。如果有人想使用你的library，他必须定义仓库的url，如下：
 
 
 	```java
@@ -214,7 +223,7 @@ dependencies {
 	    repositories {
 	        jcenter()
 	        maven {
-	            url  "http://dl.bintray.com/dodo/maven/"
+	            url  "http://dl.bintray.com/dodo/maven/" //注：此url可以在项目右上`SET ME UP`（有个小扳手的地方）的地方找到。
 	        }
 	    }
 	}
@@ -228,25 +237,29 @@ dependencies {
 	}
 	```
 
-注：上面的url可以在项目右上的地方的`SET ME UP`（有个小扳手的地方）找到。
-
-
 
 - Add to JCenter
 
-	在[jcenter主页](https://bintray.com/bintray/jcenter)上点击` Include My Package`按纽，或者你的package页面右下角`Linked to面板`有个按钮`Add to JCenter`，填写Comments然后Send即可。
+	在[jcenter主页](https://bintray.com/bintray/jcenter)上点击` Include My Package`按钮，或者package页面右下角`Linked to面板`有个按钮`Add to JCenter`，填写Comments然后Send即可。
 
 
-第一次提交审核差不多10小时，在[站内信](https://bintray.com/inbox)可以看到审核通过的信息，而此时`Linked to面板`会有jcenterd的连接`Linked to (1)`。
+第一次提交审核差不多10小时，在[站内信](https://bintray.com/inbox)可以看到审核通过的信息，`Linked to`面板有jcenterd的连接`Linked to (1)`文字更新。
 
 
-最后可以不用引入个人仓库的url，直接使用了：
+最后可以不用引入个人仓库url，直接使用了：
 
 ```java
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.uedao.android.pnedittext:library:1.0.0'
     //compile project(':library')
 }
 ```
+
+
+### 参考文章
+
+- [使用Gradle发布项目到JCenter仓库](http://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/)----主要参考之一，基本全部使用这文章的配置代码
+
+- [如何使用Android Studio把自己的Android library分享到jCenter和Maven Central](http://www.open-open.com/lib/view/open1435109824278.html)----主要参考之一，了解是怎么回事和流程，比前面参考的多了Sonatype帐号的看的有点乱（为Maven Central创建个Sonatype帐号。注：如果你不打算把library上传到Maven Central，可以跳过第二和第三部分。）
+
