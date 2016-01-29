@@ -25,7 +25,7 @@ dependencies {
 }
 ```
 
-Android Studio团队在最新版本的Android Studio把默认的仓库替换成jcenter了，`jcenter()`自动被定义，而不是旧版本的`mavenCentral()`。
+Android Studio团队在`0.8`版本起把默认的仓库替换成jcenter了，`jcenter()`自动被定义，而不是以前的`mavenCentral()`。
 
 ##发布环境
 
