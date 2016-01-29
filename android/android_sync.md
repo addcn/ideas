@@ -5,7 +5,7 @@ android异步
 - [android异步](https://github.com/addcn/ideas/blob/master/android/android_sync.md)
 
 
-
+<img src="https://raw.githubusercontent.com/addcn/ideas/master/statics/upload/android_sync_2015.12.28.png" />
 
 熟悉Windows编程的朋友知道Windows程序是消息驱动的，并且有全局的消息循环系统。Google参考了Windows的消息循环机制，也在Android系统中实现了消息循环机制。Android通过Looper、Handler来实现消息循环机制。Android的消息循环是针对线程的，每个线程都可以有自己的消息队列和消息循环。
 
