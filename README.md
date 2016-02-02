@@ -14,8 +14,8 @@ Dodo's 孵化器，使用GitHub仓库收集灵光乍现的`idea`和生活工作�
 
 ## About me
 
-- 博客 [http://blog.uedao.com/](http://blog.uedao.com/)
-- 微博 [http://www.weibo.com/addcn](http://www.weibo.com/addcn)
+- 博客[http://blog.uedao.com/](http://blog.uedao.com/)
+- 微博[http://www.weibo.com/addcn](http://www.weibo.com/addcn)
 
 
 
