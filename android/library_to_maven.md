@@ -60,26 +60,26 @@ bintray.apikey = ***********************
 添加打包Maven文件、上传Bintray所需的插件，完整内容如下：
 	
 ```groovy
-	buildscript {
-	    repositories {
-	        jcenter()
-	    }
-	    dependencies {
-	        classpath 'com.android.tools.build:gradle:1.5.0'
-	        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
-	        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-	    }
-	}
-	
-	allprojects {
-	    repositories {
-	        jcenter()
-	    }
-	}
-	
-	task clean(type: Delete) {
-	    delete rootProject.buildDir
-	}
+buildscript {
+    repositories {
+	jcenter()
+    }
+    dependencies {
+	classpath 'com.android.tools.build:gradle:1.5.0'
+	classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+	classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+    }
+}
+
+allprojects {
+    repositories {
+	jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
 ```
 
 ####5. 配置Module（library）`build.gradle`文件。
@@ -87,106 +87,105 @@ bintray.apikey = ***********************
 生成JavaDoc、生成Jar、配置项目的信息等，完整的内容如下：
 	
 ```groovy
-	apply plugin: 'com.android.library'
-	
-	apply plugin: 'com.github.dcendents.android-maven'
-	apply plugin: 'com.jfrog.bintray'
-	
-	// 版本号
-	version = "1.0.0"
-	android {
-	    compileSdkVersion 23
-	    buildToolsVersion "23.0.2"
-	
-	    defaultConfig {
-	        minSdkVersion 8
-	        targetSdkVersion 22
-	        versionCode 1
-	        versionName version
-	    }
-	    buildTypes {
-	        release {
-	            minifyEnabled false
-	            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-	        }
-	    }
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+// 版本号
+version = "1.0.0"
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+	minSdkVersion 8
+	targetSdkVersion 22
+	versionCode 1
+	versionName version
+    }
+    buildTypes {
+	release {
+	    minifyEnabled false
+	    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 	}
-	
-	dependencies {
-	    compile fileTree(dir: 'libs', include: ['*.jar'])
-	    testCompile 'junit:junit:4.12'
-	    compile 'com.android.support:appcompat-v7:23.1.1'
-	}
-	
-	def siteUrl = 'https://github.com/addcn/PNEditText'      // 项目的主页
-	def gitUrl = 'https://github.com/addcn/PNEditText.git'   // Git仓库的url
-	group = "com.uedao.android.pnedittext"                   // Maven Group ID for the artifact，一般填你唯一的包名
-	install {
-	    repositories.mavenInstaller {
-	        // This generates POM.xml with proper parameters
-	        pom {
-	            project {
-	                packaging 'aar'
-	                // Add your description here
-	                name 'Android EditText With Positive And Negative Button Widget' 	//项目描述
-	                url siteUrl
-	                // Set your license
-	                licenses {
-	                    license {
-	                        name 'The Apache Software License, Version 2.0'
-	                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-	                    }
-	                }
-	                developers {
-	                    developer {
-	                        id 'dodo'		//填写的一些基本信息
-	                        name 'dodo'
-	                        email 'lhuibo@gmail.com'
-	                    }
-	                }
-	                scm {
-	                    connection gitUrl
-	                    developerConnection gitUrl
-	                    url siteUrl
-	                }
-	            }
-	        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
+
+def siteUrl = 'https://github.com/addcn/PNEditText'      // 项目的主页
+def gitUrl = 'https://github.com/addcn/PNEditText.git'   // Git仓库的url
+group = "com.uedao.android.pnedittext"                   // Maven Group ID for the artifact，一般填你唯一的包名
+install {
+    repositories.mavenInstaller {
+	// This generates POM.xml with proper parameters
+	pom {
+	    project {
+		packaging 'aar'
+		// Add your description here
+		name 'Android EditText With Positive And Negative Button Widget' 	//项目描述
+		url siteUrl
+		// Set your license
+		licenses {
+		    license {
+			name 'The Apache Software License, Version 2.0'
+			url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+		    }
+		}
+		developers {
+		    developer {
+			id 'dodo'		//填写的一些基本信息
+			name 'PNEditText'
+			email 'lhuibo@gmail.com'
+		    }
+		}
+		scm {
+		    connection gitUrl
+		    developerConnection gitUrl
+		    url siteUrl
+		}
 	    }
 	}
-	
-	task sourcesJar(type: Jar) {
-	    from android.sourceSets.main.java.srcDirs
-	    classifier = 'sources'
-	}
-	task javadoc(type: Javadoc) {
-	    source = android.sourceSets.main.java.srcDirs
-	    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-	}
-	task javadocJar(type: Jar, dependsOn: javadoc) {
-	    classifier = 'javadoc'
-	    from javadoc.destinationDir
-	}
-	artifacts {
-	    archives javadocJar
-	    archives sourcesJar
-	}
-	Properties properties = new Properties()
-	properties.load(project.rootProject.file('local.properties').newDataInputStream())
-	
-	bintray {
-	    user = properties.getProperty("bintray.user")
-	    key = properties.getProperty("bintray.apikey")
-	    configurations = ['archives']
-	    pkg {
-	        repo = "maven"
-	        name = "PNEditText"	//发布到JCenter上的项目名字
-	        websiteUrl = siteUrl
-	        vcsUrl = gitUrl
-	        licenses = ["Apache-2.0"]
-	        publish = true
-	    }
-	}
-	
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+	repo = "maven"
+	name = "PNEditText"	//发布到JCenter上的项目名字
+	websiteUrl = siteUrl
+	vcsUrl = gitUrl
+	licenses = ["Apache-2.0"]
+	publish = true
+    }
+}	
 ```
 
 ####6. 提交library文件到Bintray
@@ -204,7 +203,6 @@ gradlew bintrayUpload
 SUCCESSFUL
 ```
 
-
 Bintray网页上，版本区域会变化，进入Files选项卡，可以看见上传的library文件。
 
 
@@ -214,23 +212,23 @@ Bintray网页上，版本区域会变化，进入Files选项卡，可以看见�
 不过library只是在你自己的Maven仓库，而不是在jcenter上。如果有人想使用你的library，他必须定义仓库的url，如下：
 
 ```groovy
-	//Project（最外层）build.gradle文件
-	allprojects {
-	    repositories {
-	        jcenter()
-	        maven {
-	            url  "http://dl.bintray.com/dodo/maven/" //注：此url可以在项目右上`SET ME UP`（有个小扳手的地方）的地方找到。
-	        }
-	    }
+//Project（最外层）build.gradle文件
+allprojects {
+    repositories {
+	jcenter()
+	maven {
+	    url  "http://dl.bintray.com/dodo/maven/" //注：此url可以在项目右上`SET ME UP`（有个小扳手的地方）的地方找到。
 	}
-	
-	//Module的build.gradle文件
-	dependencies {
-	    compile fileTree(dir: 'libs', include: ['*.jar'])
-	    compile 'com.android.support:appcompat-v7:23.1.1'
-	    compile 'com.uedao.android.pnedittext:library:1.0.0'
-	    //compile project(':library')
-	}
+    }
+}
+
+//Module的build.gradle文件
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.uedao.android.pnedittext:library:1.0.0'
+    //compile project(':library')
+}
 ```
 
 
@@ -255,22 +253,22 @@ dependencies {
 
 ## 参考文章
 
-####1. 发布到jcenter
+- 发布到jcenter
 
-- [使用Gradle发布项目到JCenter仓库](http://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/)----主要参考之一，基本全部使用这文章的配置代码
+    - [使用Gradle发布项目到JCenter仓库](http://rocko.xyz/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/)----主要参考之一，基本全部使用这文章的配置代码
 
-- [如何使用Android Studio把自己的Android library分享到jCenter和Maven Central](http://www.open-open.com/lib/view/open1435109824278.html)----主要参考之一，了解是整个流程（注：如果你不打算把library上传到Maven Central，可以跳过第二和第三部分。）
+    - [如何使用Android Studio把自己的Android library分享到jCenter和Maven Central](http://www.open-open.com/lib/view/open1435109824278.html)----主要参考之一，了解是整个流程（注：如果你不打算把library上传到Maven Central，可以跳过第二和第三部分。）
 
-####2. 发布到第三方仓库
+- 发布到第三方仓库
 
-- [JitPack的使用](http://blog.liangruijun.com/2016/01/16/JitPack%E7%9A%84%E4%BD%BF%E7%94%A8/)
+    - [JitPack的使用](http://blog.liangruijun.com/2016/01/16/JitPack%E7%9A%84%E4%BD%BF%E7%94%A8/)
 
-####3. 本地仓库
+- 发布到本地仓库
 
-- [拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建](http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/)
+    - [拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建](http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/)
 
-####4. 自己建立内网仓库
+- 自己建立内网仓库
 
-- [Windows 下Nexus搭建Maven私服](http://zyjustin9.iteye.com/blog/2017317)
-- [建立企业内部maven服务器并使用Android Studio发布公共项目](http://blog.csdn.net/qinxiandiqi/article/details/44458707)
+    - [Windows 下Nexus搭建Maven私服](http://zyjustin9.iteye.com/blog/2017317)
+    - [建立企业内部maven服务器并使用Android Studio发布公共项目](http://blog.csdn.net/qinxiandiqi/article/details/44458707)
 
