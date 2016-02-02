@@ -2,10 +2,6 @@ android开发规范
 ==============
 
 
-- [android开发规范](https://github.com/addcn/ideas/blob/master/android/code_style.md)
-- [android异步](https://github.com/addcn/ideas/blob/master/android/android_sync.md)
-
-
 ## 命名规范 ##
 
 1. 包命名
