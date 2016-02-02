@@ -1,9 +1,6 @@
 android异步
 ==============
 
-- [android开发规范](https://github.com/addcn/ideas/blob/master/android/code_style.md)
-- [android异步](https://github.com/addcn/ideas/blob/master/android/android_sync.md)
-
 
 <img src="https://raw.githubusercontent.com/addcn/ideas/master/statics/upload/android_sync_2015.12.28.png" />
 
