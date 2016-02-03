@@ -7,8 +7,8 @@ Dodo's 孵化器，使用GitHub仓库收集灵光乍现的`idea`和生活工作�
 ## 目录
 名称 | 说明
 --- | --- | ---
- [ios](https://github.com/addcn/ideas/tree/master/ios) | ios开发相关资料收集整理。
- [php](https://github.com/addcn/ideas/tree/master/php) | php开发相关资料收集整理。
+ [ios](https://github.com/addcn/ideas/tree/master/ios) | IOS开发相关资料收集整理。
+ [lnmp](https://github.com/addcn/ideas/tree/master/lnmp) | Linux、Nginx、MySQL、PHP资料收集整理。
  [trend](https://github.com/addcn/ideas/tree/master/trend) | 所有感兴趣或正在关注的一切。
  [statics](https://github.com/addcn/ideas/tree/master/statics) | 静态文件，笔记文章用到图片或者附件。
  [living](https://github.com/addcn/ideas/tree/master/living) | 生活生命相关资料（预警：偏鸡汤类，不喜勿进！！！）。
