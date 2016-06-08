@@ -27,7 +27,8 @@ SQLiteOpenHelper类中有两个抽象方法：
 
 ```onCreate()```方法是实现创建数据库的逻辑，数据库文件会存放在```/data/data/<packageName>/database/```目录下。
 
-```onUpgrade()```方法是实现升级数据库的逻辑，当实例化```SQLiteOpenHelper```子类对象时，传入的参数```version```大于当前数据库的 版本号时，当调用```getReadableDatabase()```或```getWritableDatabase()```时，就会调用此升级方法。
+
+```onUpgrade()```方法是实现升级数据库的逻辑，当实例化```SQLiteOpenHelper```子类对象时，传入的参数```version```大于当前数据库的版本号时，当调用```getReadableDatabase()```或```getWritableDatabase()```时，就会调用此升级方法。
 
 
 
