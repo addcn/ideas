@@ -12,6 +12,8 @@ Android界面开发
 - [Android中的常用布局](https://github.com/addcn/ideas/blob/master/android/notes/android-base-layout.md)
 - [Android中常用代码](https://github.com/addcn/ideas/blob/master/android/notes/android-base-code.md)
 - [Android中view绘制流程](https://github.com/addcn/ideas/blob/master/android/notes/android-base-view.md)
+- [Android中的adapter](https://github.com/addcn/ideas/blob/master/android/notes/android-base-adapter.md)
+- [Android中的sqlite](https://github.com/addcn/ideas/blob/master/android/notes/android-base-sqlite.md)
 
 ----------
 
