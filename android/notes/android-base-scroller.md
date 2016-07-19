@@ -1,4 +1,4 @@
-Android跳转动画
+Android的Scroller
 ==================================================
 
 
@@ -18,42 +18,27 @@ Android界面开发
 ----------
 
 
-1.res文件下anim文件夹，新建fade_in.xml、fade_out.xml文件
-
-
-
-跳转时调用
-
-```
-
-startActivity(intent);
-
-finish();
-
-overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
-```
-
-
-关闭时调用
-
-
-```
-
-finish();
-
-overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
-```
 
 
 
 
 
-参考文章
 
-> [Activity 页面淡入淡出](http://www.jianshu.com/p/8e74e980bf03)
+Android Scroller实现View弹性滑动完全解析
+
+http://www.jianshu.com/p/9419262a342a#
 
 
-> [实现activity跳转动画的五种方式](http://blog.csdn.net/qq_23547831/article/details/51821159)
+Android滑动的实现
 
+http://www.jianshu.com/p/57cab2a9cd0e#
+
+
+AutoScrollTopBottomView
+
+http://www.jianshu.com/p/e7b68f1dbe63#
+
+
+Android必知必会-自定义Scrollbar样式
+
+http://likfe.github.io/2016/05/16/diyScrollbar/
