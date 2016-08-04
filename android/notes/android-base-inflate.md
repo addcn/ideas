@@ -191,3 +191,5 @@ java
 #### 参考文章
 
 > [Android LayoutInflater原理分析，带你一步步深入了解View(一)](http://blog.csdn.net/guolin_blog/article/details/12921889)
+
+> [LayoutInflater&LayoutInflaterCompat源码解析](https://github.com/peerless2012/SourceAnalysis/blob/master/Android/FrameWork/LayoutInflater%26LayoutInflaterCompat%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)

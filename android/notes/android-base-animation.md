@@ -51,6 +51,6 @@ Android中动画分为三种：
 
 > [Android 你应该知道的动画](http://www.jianshu.com/p/bb206e3b0e02#)
 
-
+> [属性动画ValueAnimator在自定义View中的使用](http://mafei.site/2016/07/17/android-valueanimator/)
 
 

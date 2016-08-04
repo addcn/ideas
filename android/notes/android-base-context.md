@@ -1,4 +1,4 @@
-Android转场动画
+Android中的Context
 ==================================================
 
 
@@ -18,33 +18,6 @@ Android界面开发
 ----------
 
 
-1.res文件下anim文件夹，新建fade_in.xml、fade_out.xml文件
-
-
-
-跳转时调用
-
-```
-
-startActivity(intent);
-
-finish();
-
-overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
-```
-
-
-关闭时调用
-
-
-```
-
-finish();
-
-overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
-```
 
 
 
@@ -52,9 +25,5 @@ overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
 参考文章
 
-> [Activity 页面淡入淡出](http://www.jianshu.com/p/8e74e980bf03)
-
-> [动起来！动起来！- Android Transitions 转场动画](http://www.jianshu.com/p/98f2ec280945#)
-
-> [实现activity跳转动画的五种方式](http://blog.csdn.net/qq_23547831/article/details/51821159)
+> [Context都没弄明白，还怎么做Android开发？](http://www.jianshu.com/p/94e0f9ab3f1d#)
 
